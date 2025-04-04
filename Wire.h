@@ -8,18 +8,19 @@ class Gate;
 class Wire {
 public:
 	Wire();
-	void setValue();
+	void setValue(int x);
+	void setValue(char x);
 	void setDrives();
 	void setHistory();
 	int getValue();
-	int getDrives();
+	vector<Gate*> getDrives();
 	int getIndex();
+	enum ValueType { LOW = 0, HIGH = 1, UNDEFINED = -1 };
 private:
 	int iValue;
 	char cValue;
-	enum eValue;
-	string sName;
-	char cName;
+	string stringName;
+	char charName;
 	vector<Gate*> drives;
 	int index;
 };
