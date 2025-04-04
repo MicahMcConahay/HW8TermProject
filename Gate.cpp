@@ -1,5 +1,13 @@
 #include "Gate.h"
 
+Gate::Gate(string typ, int d, Wire* input1, Wire* input2, Wire* output) {
+	type = typ;
+	delay = d;
+	in1 = input1;
+	in2 = input2;
+	out = output;
+}
+
 int Gate::getDelay() const {
 	return delay;
 }
