@@ -13,7 +13,7 @@ class Gate {
 	int getDelay() const;
 	Wire* getInput() const;
 	Wire* getOutput() const;
-	int evaluate(Wire* in1,Wire* in2,Wire* out) const;
+	int evaluate() const;
 
 private:
 	Wire* in1, * in2;
