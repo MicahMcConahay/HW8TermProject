@@ -10,7 +10,7 @@ public:
 	Wire();
 	void setValue(int x);
 	void setValue(char x);
-	void setDrives();
+	void setDrives(Gate* g);
 	void setHistory(string x);
 	int getValue();
 	vector<Gate*> getDrives();
