@@ -17,8 +17,8 @@ void Wire::setValue(char x) {
 	}
 	cValue = x;
 }
-void Wire::setDrives() {
-//todo: implement
+void Wire::setDrives(Gate* g) {
+	drives.push_back(g);
 }
 void Wire::setHistory(string x) {
 	history += x;
