@@ -32,3 +32,6 @@ vector<Gate*> Wire::getDrives() {
 int Wire::getIndex() {
 	return index;
 }
+void printHistory() const {
+	cout << history << endl;
+}
