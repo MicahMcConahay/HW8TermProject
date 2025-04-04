@@ -9,6 +9,27 @@ Wire* Gate::getInput() const {
 Wire* Gate::getOutput() const {
 	return out;
 }
-int Gate::evaluate(Wire* in1, Wire* in2, Wire* out) const {
+int Gate::evaluate() const {
+	if (type == "NOT") {
 	
+	}
+	else if (type == "AND") {
+	
+	}
+	else if (type == "OR") {
+	
+	}
+	else if (type == "XOR") {
+	
+	}
+	else if (type == "NAND") {
+	
+	}
+	else if (type == "NOR") {
+	
+	}
+	else if (type == "XNOR") {
+	
+	}
+	return 1;
 }
