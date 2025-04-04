@@ -17,8 +17,12 @@ void Wire::setValue(char x) {
 	}
 	cValue = x;
 }
-void Wire::setDrives() {}
-void Wire::setHistory() {}
+void Wire::setDrives() {
+//todo: implement
+}
+void Wire::setHistory() {
+//todo: implement
+}
 int Wire::getValue() {
 	return iValue;
 }
