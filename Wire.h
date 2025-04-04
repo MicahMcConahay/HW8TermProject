@@ -11,7 +11,7 @@ public:
 	void setValue(int x);
 	void setValue(char x);
 	void setDrives();
-	void setHistory();
+	void setHistory(string x);
 	int getValue();
 	vector<Gate*> getDrives();
 	int getIndex();
