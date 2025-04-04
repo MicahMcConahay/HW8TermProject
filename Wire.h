@@ -15,6 +15,7 @@ public:
 	int getValue();
 	vector<Gate*> getDrives();
 	int getIndex();
+	void printHistory() const;
 	enum ValueType { LOW = 0, HIGH = 1, UNDEFINED = -1 };
 private:
 	int iValue;
