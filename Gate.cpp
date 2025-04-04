@@ -15,6 +15,7 @@ Wire* Gate::getOutput() const {
 int Gate::evaluate() const {
 	int a = in1->iValue;
 	int b = in2->Ivalue;
+	//I don't know why this throws an error, it should work...
 
 	if (type == "NOT") {
 		if (a == 1) {
