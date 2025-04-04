@@ -20,8 +20,8 @@ void Wire::setValue(char x) {
 void Wire::setDrives() {
 //todo: implement
 }
-void Wire::setHistory() {
-//todo: implement
+void Wire::setHistory(string x) {
+	history += x;
 }
 int Wire::getValue() {
 	return iValue;
