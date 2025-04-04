@@ -9,6 +9,7 @@ public:
 	Gate(string, int, Wire*, Wire*, Wire*);
 	int getDelay() const;
 	Wire* getInput() const;
+	Wire* getSecondInput() const;
 	Wire* getOutput() const;
 	int evaluate() const;
 
