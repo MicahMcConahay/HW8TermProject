@@ -23,4 +23,5 @@ private:
 	char charName;
 	vector<Gate*> drives;
 	int index;
+	string history;
 };
