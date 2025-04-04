@@ -5,10 +5,7 @@ using namespace std;
 class Wire;
 
 class Gate {
-	string type;
-	int delay;
-	string extra;
-
+public:
 	Gate(string, int, Wire*, Wire*, Wire*);
 	int getDelay() const;
 	Wire* getInput() const;
@@ -16,6 +13,9 @@ class Gate {
 	int evaluate() const;
 
 private:
+	string type;
+	int delay;
+	string extra;
 	Wire* in1, * in2;
 	Wire* out;
 };
