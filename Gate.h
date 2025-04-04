@@ -6,7 +6,7 @@ class Wire;
 
 class Gate {
 public:
-	Gate(string, int, Wire*, Wire*, Wire*);
+	Gate(string typ, int d, Wire* input1, Wire* input2, Wire* output);
 	int getDelay() const;
 	Wire* getInput() const;
 	Wire* getSecondInput() const;
