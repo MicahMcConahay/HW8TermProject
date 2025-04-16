@@ -2,8 +2,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Gate.h"
+#include "Wire.h"
+
 using namespace std;
 
+/*
 string smallParse(string& input) {
 	int pos;
 	string output;
@@ -37,16 +41,20 @@ void parseVector(string input) {
 
 	//find the input value
 }
-
+*/
 
 int main() {
-	vector <int> wires;
+	vector <Wire*> wires;
+	vector <Gate*> gates;
 
 	ifstream inFS;
 	string text;
 	string filename = "";
 	cin >> filename;
-	
+
+	string keyword, wireName, dummy;
+	int    wireIndex, in1, in2, output, gateDelay;
+
 	int filenamelength = filename.size();
 	filename = filename + ".txt";
 	inFS.open(filename);
@@ -54,15 +62,29 @@ int main() {
 		cout << "Error opening file!" << '\n';
 		return 0;
 	}
-	
+
+	inFS >> keyword;
+
 	while (!inFS.eof()) {
-		getline(inFS, text);
-		if (text[0] != 'C') {
-			parseInput(text);
+		if (keyword == "CIRCUIT") {
+			inFS >> dummy;
 		}
+		else if (keyword == "INPUT") {
+			inFS >> wireName >> wireIndex;
+			// now create the wire using ctor
+			// stick the wire in w
+		}
+		else if (keyword == "NOT") {
+			inFS >> gateDelay >> dummy >> in1 >> output;
+			// check to make sure in1 and output exist, if not create them with your ctor
+			// then create the gate
+			// stick the gate in g
+		}
+
+		inFS >> keyword;
 	}
 	//filename.insert(filenamelength, "_v");
 	//inFS.open(filename);
-	
+
 	return 0;
 }
