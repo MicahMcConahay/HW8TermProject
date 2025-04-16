@@ -4,17 +4,27 @@
 #include <vector>
 using namespace std;
 
-void parseInput(string input){
+string smallParse(string& input) {
+	int pos;
+	string output;
+	pos = input.find(' ');
+	output = input.substr(0, pos);
+	input.erase(0, pos+1);
+	return output;
+}
+void parseInput(string input) {
+	vector <string> first;
+	string temp = "";
+
 	//parse the string for every space -> split the strings as said below:
 	// find the line header (input, output, or gate type)
-
-	// for input or output, find name. For gate, find delay
-
-	//gate in1
-
-	//gate in2 or out1
-
-	//gate out1
+	for() {
+		temp = smallParse(input);
+		if (temp != " " || temp != "") {
+			first.push_back(temp);
+			cout << temp;
+		}
+	}
 }
 
 void parseVector(string input) {
@@ -36,19 +46,23 @@ int main() {
 	string text;
 	string filename = "";
 	cin >> filename;
-
+	
 	int filenamelength = filename.size();
 	filename = filename + ".txt";
 	inFS.open(filename);
 	if (!inFS.is_open()) {
-		cout << "Error opening file!" << '/n';
+		cout << "Error opening file!" << '\n';
+		return 0;
 	}
-
+	
 	while (!inFS.eof()) {
 		getline(inFS, text);
-		parseInput(text);
+		if (text[0] != 'C') {
+			parseInput(text);
+		}
 	}
-	filename.insert(filenamelength, "_v");
-		inFS.open(filename);
+	//filename.insert(filenamelength, "_v");
+	//inFS.open(filename);
+	
 	return 0;
 }
