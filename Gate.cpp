@@ -1,4 +1,5 @@
 #include "Gate.h"
+#include "Wire.h"
 
 Gate::Gate(string typ, int d, Wire* input1, Wire* input2, Wire* output) {
 	type = typ;
@@ -27,8 +28,8 @@ Wire* Gate::getOutput() const {
 	return out;
 }
 int Gate::evaluate() const {
-	int a = in1->iValue;
-	int b = in2->Ivalue;
+	int a = in1->getValue();
+	int b = in2->getValue();
 	//I don't know why this throws an error, it should work...
 
 	if (type == "NOT") {
