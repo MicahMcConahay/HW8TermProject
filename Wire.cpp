@@ -1,6 +1,7 @@
 #include "Wire.h"
+using namespace std;
 Wire::Wire() {
-	
+
 }
 void Wire::setValue(int x) {
 	if (x == LOW || x == HIGH || x == UNDEFINED) {
@@ -32,6 +33,6 @@ vector<Gate*> Wire::getDrives() {
 int Wire::getIndex() {
 	return index;
 }
-void printHistory() const {
+void Wire::printHistory() const {
 	cout << history << endl;
 }
