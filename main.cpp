@@ -73,6 +73,11 @@ int main() {
 			inFS >> wireName >> wireIndex;
 			// now create the wire using ctor
 			// stick the wire in w
+			Wire n;
+			n.setName(wireName);
+
+			
+
 		}
 		else if (keyword == "NOT") {
 			inFS >> gateDelay >> dummy >> in1 >> output;
