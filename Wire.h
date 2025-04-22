@@ -1,7 +1,7 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
 using namespace std;
 
 class Gate;
@@ -9,6 +9,8 @@ class Gate;
 class Wire {
 public:
 	Wire();
+	void setName(string n);
+	void setName(char c);
 	void setValue(int x);
 	void setValue(char x);
 	void setDrives(Gate* g);
