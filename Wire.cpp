@@ -3,6 +3,12 @@ using namespace std;
 Wire::Wire() {
 
 }
+void Wire::setName(string n) {
+	stringName = n;
+}
+void Wire::setName(char c) {
+	charName = c;
+}
 void Wire::setValue(int x) {
 	if (x == LOW || x == HIGH || x == UNDEFINED) {
 		iValue = x;
