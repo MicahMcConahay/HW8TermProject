@@ -80,6 +80,13 @@ int main() {
 			// then create the gate
 			// stick the gate in g
 		}
+		else {
+			inFS >> gateDelay >> dummy >> in1 >> in2 >> output;
+			//check to make sure in1, in2, and output exist, if not, create them with constructor
+			//create gate
+			//put gate in g
+
+		}
 
 		inFS >> keyword;
 	}
