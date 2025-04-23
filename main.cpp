@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <queue>
 #include "Gate.h"
 #include "Wire.h"
 
@@ -18,6 +19,8 @@ int main() {
 
 	string keyword, wireName, dummy, circuitName;
 	int    wireIndex, in1, in2, output, gateDelay, wireTime, wireValue;
+
+	std::queue<pair<int, pair<string, int>>> vfile;
 
 	int filenamelength = filename.size();
 	filename = filename + ".txt";
@@ -89,6 +92,7 @@ int main() {
 		inFS >> keyword;
 	}
 	//the following are tests to make sure everything inputs as it should:
+	/*
 	for (int i = 0; i < wires.size(); ++i) {
 		if (wires[i] != nullptr) {
 			cout << wires[i]->getName();
@@ -107,6 +111,7 @@ int main() {
 		}
 		cout << gates[i]->getOutput()->getName() << '\n';
 	}
+	*/
 	inFS.close();
 	filename.insert(filenamelength, "_v");
 	inFS.open(filename);
@@ -125,15 +130,21 @@ int main() {
 			//list by order of time
 			// value should be either 1, 0, or X.
 			// inturpret value as:    1, 0,    -1 respectively
-
+			vfile.push(make_pair(wireTime, make_pair(wireName, wireValue)));
+			//sort this by vfile[x].first value
 
 		}
 		inFS >> keyword;
 	}
+	for (int i = 0; i < vfile.size(); ++i) {
+		cout << vfile.front().first << vfile.front().second.first << vfile.front().second.second << '\n';
+		vfile.pop();
+	}
+
 	inFS.close();
 	filename.erase(filenamelength);
 
-	//for any gate, once either in1 or in2 changes, evaluate() instantly
+	//for any gate, once either in1 or in2 changes, evaluate() instantly to avoid missing a value
 	//but only change the output after delay number of time iterations
 
 	//as time goes on, use the wire's history to keep track of high, low, or x
@@ -148,8 +159,9 @@ int main() {
 	for (int i = 0; i < wires.size(); ++i) {
 		if (wires[i] != nullptr) {
 			if (wires[i]->getName() != "") {
-				cout << '\n' << wires[i]->getName() << " | "
-					/* << (trace) */ << '\n' << "  | ";
+				cout << '\n' << wires[i]->getName() << " | ";
+				wires[i]->printHistory();
+				cout << "  | ";
 			}
 		}
 	}
