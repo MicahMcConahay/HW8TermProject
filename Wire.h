@@ -15,6 +15,7 @@ public:
 	void setValue(char x);
 	void setDrives(Gate* g);
 	void setHistory(string x);
+	string getName();
 	int getValue();
 	vector<Gate*> getDrives();
 	int getIndex();
