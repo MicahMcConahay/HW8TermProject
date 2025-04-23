@@ -7,42 +7,6 @@
 
 using namespace std;
 
-/*
-string smallParse(string& input) {
-	int pos;
-	string output;
-	pos = input.find(' ');
-	output = input.substr(0, pos);
-	input.erase(0, pos+1);
-	return output;
-}
-void parseInput(string input) {
-	vector <string> first;
-	string temp = "";
-
-	//parse the string for every space -> split the strings as said below:
-	// find the line header (input, output, or gate type)
-	for() {
-		temp = smallParse(input);
-		if (temp != " " && temp != "") {
-			first.push_back(temp);
-			cout << temp;
-		}
-	}
-}
-
-void parseVector(string input) {
-	//parse the vector file for every space -> split the remaining strings below:
-	//find the header -> only input...?
-
-	// find the input name
-
-	//find the input time
-
-	//find the input value
-}
-*/
-
 int main() {
 	vector <Wire*> wires;
 	vector <Gate*> gates;
@@ -52,7 +16,7 @@ int main() {
 	string filename = "";
 	cin >> filename;
 
-	string keyword, wireName, dummy;
+	string keyword, wireName, dummy, circuitName;
 	int    wireIndex, in1, in2, output, gateDelay, wireTime, wireValue;
 
 	int filenamelength = filename.size();
@@ -67,7 +31,7 @@ int main() {
 
 	while (!inFS.eof()) {
 		if (keyword == "CIRCUIT") {
-			inFS >> dummy;
+			inFS >> circuitName;
 		}
 		else if (keyword == "INPUT" || keyword == "OUTPUT") {
 			inFS >> wireName >> wireIndex;
@@ -117,7 +81,8 @@ int main() {
 			if (wires[output] == nullptr) {
 				wires[output] = new Wire;
 			}
-			Gate* g = new Gate(keyword, gateDelay, wires[in1], wires[in2], wires[output]);
+			Gate* g = new Gate(keyword, gateDelay, wires[in1], wires[in2],
+								wires[output]);
 			gates.push_back(g);
 		}
 
@@ -159,13 +124,42 @@ int main() {
 			//name should match with an input value
 			//list by order of time
 			// value should be either 1, 0, or X.
-			// inturpret value as:    1, 0,    -1
+			// inturpret value as:    1, 0,    -1 respectively
 
 
 		}
 		inFS >> keyword;
 	}
-	
 	inFS.close();
+	filename.erase(filenamelength);
+
+	//for any gate, once either in1 or in2 changes, evaluate() instantly
+	//but only change the output after delay number of time iterations
+
+	//as time goes on, use the wire's history to keep track of high, low, or x
+	//only display this output after the final delay in the circuit has ended
+	// it replaces (trace) in the code below
+	
+	// start of display below:
+
+	cout << '\n' << "Simulating " << filename << ".txt" << '\n' << '\n'
+		<< '\n' << "Wire traces:";
+	//	repeat following for every input or output (capital alphabetically named wire in wires vector)
+	for (int i = 0; i < wires.size(); ++i) {
+		if (wires[i] != nullptr) {
+			if (wires[i]->getName() != "") {
+				cout << '\n' << wires[i]->getName() << " | "
+					/* << (trace) */ << '\n' << "  | ";
+			}
+		}
+	}
+	// display "_" the same number of times as time iterations
+	// then display time over 2 lines - tens position on first line, ones position on second
+	// put 4 dashes between each timestamp in tens line, and however many dashes needed to end simulation
+
+	//end with
+	cout << '\n' << "Circuit Name: " << circuitName << '\n';
+	cout << "Time elapsed: " <</* number of time iterations */"ns" << '\n';
+
 	return 0;
 }
