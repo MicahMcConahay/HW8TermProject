@@ -30,6 +30,9 @@ void Wire::setDrives(Gate* g) {
 void Wire::setHistory(string x) {
 	history += x;
 }
+string Wire::getName() {
+	return stringName;
+}
 int Wire::getValue() {
 	return iValue;
 }
