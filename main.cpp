@@ -24,7 +24,7 @@ void parseInput(string input) {
 	// find the line header (input, output, or gate type)
 	for() {
 		temp = smallParse(input);
-		if (temp != " " || temp != "") {
+		if (temp != " " && temp != "") {
 			first.push_back(temp);
 			cout << temp;
 		}
