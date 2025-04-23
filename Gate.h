@@ -8,6 +8,7 @@ class Gate {
 public:
 	Gate(string typ, int d, Wire* input1, Wire* input2, Wire* output);
 	Gate(string typ, int d, Wire* input1, Wire* output);
+	string getType() const;
 	int getDelay() const;
 	Wire* getInput() const;
 	Wire* getSecondInput() const;
