@@ -1,112 +1,32 @@
-#include <fstream>
+#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Gate.h"
-#include "Wire.h"
-
 using namespace std;
 
-/*
-string smallParse(string& input) {
-	int pos;
-	string output;
-	pos = input.find(' ');
-	output = input.substr(0, pos);
-	input.erase(0, pos+1);
-	return output;
-}
-void parseInput(string input) {
-	vector <string> first;
-	string temp = "";
+class Gate;
 
-	//parse the string for every space -> split the strings as said below:
-	// find the line header (input, output, or gate type)
-	for() {
-		temp = smallParse(input);
-		if (temp != " " || temp != "") {
-			first.push_back(temp);
-			cout << temp;
-		}
-	}
-}
-
-void parseVector(string input) {
-	//parse the vector file for every space -> split the remaining strings below:
-	//find the header -> only input...?
-
-	// find the input name
-
-	//find the input time
-
-	//find the input value
-}
-*/
-
-int main() {
-	vector <Wire*> wires;
-	vector <Gate*> gates;
-
-	ifstream inFS;
-	string text;
-	string filename = "";
-	cin >> filename;
-
-	string keyword, wireName, dummy;
-	int    wireIndex, in1, in2, output, gateDelay;
-
-	int filenamelength = filename.size();
-	filename = filename + ".txt";
-	inFS.open(filename);
-	if (!inFS.is_open()) {
-		cout << "Error opening file!" << '\n';
-		return 0;
-	}
-
-	inFS >> keyword;
-
-	while (!inFS.eof()) {
-		if (keyword == "CIRCUIT") {
-			inFS >> dummy;
-		}
-		else if (keyword == "INPUT" || keyword == "OUTPUT") {
-			inFS >> wireName >> wireIndex;
-			// now create the wire using ctor
-			// stick the wire in w
-			Wire* n = new Wire;
-			n->setName(wireName);
-			while (wires.size() < wireIndex+1) {
-				wires.push_back(nullptr);
-			}
-			wires[wireIndex] = n;
-			
-
-		}
-		else if (keyword == "NOT") {
-			inFS >> gateDelay >> dummy >> in1 >> output;
-			// check to make sure in1 and output exist, if not create them with your ctor
-			// then create the gate
-			// stick the gate in g
-
-		}
-		else {
-			inFS >> gateDelay >> dummy >> in1 >> in2 >> output;
-			//check to make sure in1, in2, and output exist, if not, create them with constructor
-			//create gate
-			//put gate in g
-
-		}
-
-		inFS >> keyword;
-	}
-	for (int i = 0; i < wires.size(); ++i) {
-		if (wires[i] != nullptr) {
-			cout << wires[i]->getName();
-		}
-		else cout << "x";
-	}
-	//filename.insert(filenamelength, "_v");
-	//inFS.open(filename);
-
-	return 0;
-}
+class Wire {
+public:
+	Wire();
+	void setName(string n);
+	void setName(char c);
+	void setValue(int x);
+	void setValue(char x);
+	void setDrives(Gate* g);
+	void setHistory(string x);
+	string getName();
+	int getValue();
+	vector<Gate*> getDrives();
+	int getIndex();
+	void printHistory() const;
+	enum ValueType { LOW = 0, HIGH = 1, UNDEFINED = -1 };
+private:
+	int iValue;
+	char cValue;
+	string stringName;
+	char charName;
+	vector<Gate*> drives;
+	int index;
+	string history = "";
+};
