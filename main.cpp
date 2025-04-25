@@ -149,13 +149,11 @@ int main() {
 
 	//as time goes on, use the wire's history to keep track of high, low, or x
 	//only display this output after the final delay in the circuit has ended
-	// it replaces (trace) in the code below
 	
 	// start of display below:
 
 	cout << '\n' << "Simulating " << filename << ".txt" << '\n' << '\n'
 		<< '\n' << "Wire traces:";
-	//	repeat following for every input or output (capital alphabetically named wire in wires vector)
 	for (int i = 0; i < wires.size(); ++i) {
 		if (wires[i] != nullptr) {
 			if (wires[i]->getName() != "") {
