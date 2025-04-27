@@ -42,11 +42,11 @@ int main() {
 			// stick the wire in w
 			Wire* n = new Wire;
 			n->setName(wireName);
-			while (wires.size() < wireIndex+1) {
+			while (wires.size() < wireIndex + 1) {
 				wires.push_back(nullptr);
 			}
 			wires[wireIndex] = n;
-			
+
 
 		}
 		else if (keyword == "NOT") {
@@ -63,7 +63,7 @@ int main() {
 			if (wires[output] == nullptr) {
 				wires[output] = new Wire;
 			}
-			Gate* g = new Gate(keyword,gateDelay,wires[in1],wires[output]);
+			Gate* g = new Gate(keyword, gateDelay, wires[in1], wires[output]);
 			gates.push_back(g);
 		}
 		else {
@@ -72,7 +72,7 @@ int main() {
 			//create gate
 			//put gate in g
 			while (wires.size() < in1 + 1 || wires.size() < in2 + 1
-				   || wires.size() < output + 1) {
+				|| wires.size() < output + 1) {
 				wires.push_back(nullptr);
 			}
 			if (wires[in1] == nullptr) {
@@ -85,7 +85,7 @@ int main() {
 				wires[output] = new Wire;
 			}
 			Gate* g = new Gate(keyword, gateDelay, wires[in1], wires[in2],
-								wires[output]);
+				wires[output]);
 			gates.push_back(g);
 		}
 
@@ -146,7 +146,7 @@ int main() {
 
 	//for any gate, once either in1 or in2 changes, evaluate() instantly to avoid missing a value
 	//but only change the output after delay number of time iterations
-
+	
 	//as time goes on, use the wire's history to keep track of high, low, or x
 	//only display this output after the final delay in the circuit has ended
 	
@@ -166,7 +166,35 @@ int main() {
 	// display "_" the same number of times as time iterations
 	// then display time over 2 lines - tens position on first line, ones position on second
 	// put 4 dashes between each timestamp in tens line, and however many dashes needed to end simulation
-
+	
+	cout << "  0";
+	int x = 0;
+	for (int i = 0; i <  ;++i) {
+		if (((i + 1) % 5) == 0) {
+			cout << x;
+			
+		}
+		else {
+			cout << "_";
+		}
+	}
+	cout << endl;
+	cout << "  0";
+	x = 0;
+	for (int i = 0; i < ;++i) {
+		if (((i + 1) % 5) == 0) {
+			cout << x;
+			if (x == 5) {
+				x = 0;
+			}
+			else {
+				x = 5;
+			}
+		}
+		else {
+			cout << " ";
+		}
+	}
 	//end with
 	cout << '\n' << "Circuit Name: " << circuitName << '\n';
 	cout << "Time elapsed: " <</* number of time iterations */"ns" << '\n';
