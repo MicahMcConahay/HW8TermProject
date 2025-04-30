@@ -27,6 +27,11 @@ void Wire::setValue(char x) {
 void Wire::setDrives(Gate* g) {
 	drives.push_back(g);
 }
+
+string Wire::getHistory() {
+	return history;
+}
+
 void Wire::setHistory(string x) {
 	history += x;
 }
