@@ -19,6 +19,7 @@ public:
 	int getValue();
 	vector<Gate*> getDrives();
 	int getIndex();
+	string Wire::getHistory();
 	void printHistory() const;
 	enum ValueType { LOW = 0, HIGH = 1, UNDEFINED = -1 };
 private:
