@@ -169,7 +169,7 @@ int main() {
 	
 	cout << "  0";
 	int x = 0;
-	for (int i = 0; i <  ;++i) {
+	for (int i = 0; i < (wires[1]->getHistory()).size() ;++i) {
 		if (((i + 1) % 5) == 0) {
 			cout << x;
 			
@@ -181,7 +181,7 @@ int main() {
 	cout << endl;
 	cout << "  0";
 	x = 0;
-	for (int i = 0; i < ;++i) {
+	for (int i = 0; i < (wires[1]->getHistory()).size()  ;++i) {
 		if (((i + 1) % 5) == 0) {
 			cout << x;
 			if (x == 5) {
